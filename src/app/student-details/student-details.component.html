@@ -1,0 +1,25 @@
+<div class='container'>
+
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{student.name}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>Age:</strong> {{student.age}}</div>
+      <div><strong>Phone Number:</strong> {{student.phonenumber}}</div>
+      <div><strong>E-mail:</strong> {{student.price}}</div>
+      <div><strong>Gender:</strong> {{student.gender}}</div>
+      <div><strong>Degree Programme:</strong> {{student.Degree_Programme}}</div>
+    </div>
+    <div class="col-md-6">
+      <address>
+        <strong>Address:</strong><br />
+        {{student.location.address}}<br />
+        {{student.location.town}}, {{student.location.state}}
+      </address>
+    </div>
+  </div>
+</div>
