@@ -1,29 +1,55 @@
 import {Component} from '@angular/core'
 import {Router} from '@angular/router'
+import {StudentService} from '../_services'
+
 
 @Component({
-  template: `
-  <h1>New Student<h1>
-  <hr>
-  <div class='col-md-6'>
-  <h3>[New Student Form]</h3>
-  <br/>
-  <br/>
-  <button type='submit' class='btn btn-primary'>Save</button>
-  <button type='button' (click)='cancel()'  class='btn btn-default'>Cancel</button>
-
-  </div>
-  `,
-
+  templateUrl:'./add-student.html',
+  styles: [`
+  em{float:right;
+      color: #E05C65;
+    padding-left: 10px;}
+    .error input{background-color: #E3C3C5;}
+    .error :: -webkit-input-placeholder {color: #999}
+    .error :: -moz-placeholer{color: #999;}
+    .error :-moz-placeholder {color: #999}
+    .error : ms-input-placeholder {color:#999}
+    `]
 })
 
+
 export class AddStudentComponent{
-  isDirty:boolean = true
+  // isDirty:boolean = true
+   newStudent
 
-  constructor(private router: Router){
 
+  constructor(private router: Router,
+     private studentService: StudentService){}
+ngOnInit(){
+  // this.student={
+  //   name: "James",
+  //   age: "10",
+  //   phonenumber: "12345",
+  //   e_mail:"j@ymail.com",
+  //   level: "200",
+  //   gender: "Male",
+  //   Degree_Programme: "Msc.",
+  //   location: {
+  //     address:"2",
+  //     town: "ikate",
+  //     state: "lagos"
+  //   },
+  //   website: "3indigen.com"
+  // }
+}
+
+  addStudent(formValues){
+    this.studentService.addStudent(formValues)
+    // this.isDirty = false
+    this.router.navigate(['/dashboard'])
   }
   cancel(){
-    this.router.navigate(['/app'])
+    window.confirm('Are you sure you want to cancel?')
+    this.router.navigate(['/dashboard'])
   }
 }

@@ -1,19 +1,38 @@
 import {Routes} from '@angular/router'
-import {StudentDetailsComponent,
-  StudentProfileComponent,
-  AddStudentComponent,
-  StudentRouteActivator,
-  StudentProfileResolver} from './index'
-import { Error404Component } from './app/errors/404.component';
+import {StudentDetailsComponent } from './app/Home '
+import {HomeComponent} from './app/Home '
+// import { StudentProfileComponent} from './app/student'
+import { AddStudentComponent} from './app/Add-students'
+import {StudentRouteActivator,
+  StudentProfileResolver} from './app/_services'
+import { Error404Component, Error401Component } from './app/errors';
+import { DashboardComponent } from './app/dashboard'
+import {EditComponent} from './app/Edit-student'
+import { CustomerComponent } from './app/customer/customer.component'
+
 
 
 export const appRoutes:Routes = [
-  {path: 'app/new', component: AddStudentComponent,
-canDeactivate: ['canDeactivateAddStudent']},
-{path: 'app', component: StudentProfileComponent, resolve: {students:StudentProfileResolver}},
+  {path: 'new', component: AddStudentComponent, canActivate: [StudentRouteActivator]
+  // ,canDeactivate: ['canDeactivateAddStudent']
+},
+// {path: 'app', component: StudentProfileComponent,
+//  resolve: {students:StudentProfileResolver}},
+{path: 'home', component: HomeComponent,
+  resolve: {students:StudentProfileResolver}},
 {path: '404', component: Error404Component},
-{path: 'app/:id', component: StudentDetailsComponent, canActivate: [StudentRouteActivator] },
-{path: '', redirectTo: 'app', pathMatch: 'full'},
-{path: 'user', loadChildren: './app/user/user.module#UserModule'}
+{path: '401', component: Error401Component},
+{path: 'home/:id', component: StudentDetailsComponent,
+ canActivate: [StudentRouteActivator] },
+ {path: 'edit/:id', component: EditComponent,
+ canActivate: [StudentRouteActivator] },
+{path: '', redirectTo: 'home', pathMatch: 'full'},
+{path: 'admin', loadChildren: './app/user/user.module#UserModule'},
+// {path : '**', redirectTo: 'admin/login',pathMatch:'full'},
+{path : 'dashboard', component: DashboardComponent,
+resolve: {students:StudentProfileResolver},canActivate: [StudentRouteActivator]
+// ,canDeactivate: ['canDeactivateDashboard']
+},
+{path: 'customer', component:CustomerComponent}
 
 ]

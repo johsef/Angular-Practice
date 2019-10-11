@@ -1,0 +1,30 @@
+<div>
+  <h1>Registered Student</h1>
+  <hr>
+
+  <div class='row'>
+    <div *ngFor='let stud of students' class='col-md-5' >
+        <div *ngIf='stud'>
+          <div class ='well hoverwell thumbnail'>
+                <h3>{{stud.name}}
+                      <span style= 'float:right'>
+                      <button (click)="editStudent(stud.id)" class="glyphicon glyphicon-pencil btn-default btn-sm" tooltipPlacement = 'top' tooltip="Edit Students Records"  ></button>
+                      <button (click) ="delStudent(stud.id)"class="glyphicon glyphicon-remove btn-danger btn-sm"  tooltipPlacement = 'right' tooltip="Delete Students Records"></button>
+                    </span>
+              </h3>
+                        <div >Age: {{stud.age}}</div>
+                        <div>Phone Number: {{stud.phonenumber}}</div>
+                        <div>E-mail: {{stud.e_mail}}</div>
+                        <div>Gender: {{stud.gender}}</div>
+                        <div>Level: {{stud.level}}</div>
+                        <div *ngIf='stud.Degree_Programme'>Degree Programme: {{stud.Degree_Programme}}</div>
+                        <div>Address:{{stud.location.address}},
+                        {{stud.location.town}} {{stud.location.state}}</div>
+                        <div [hidden]='!stud.website'>Website: {{stud.website}}</div>
+
+                </div>
+        </div>
+        </div>
+  </div>
+</div>
+

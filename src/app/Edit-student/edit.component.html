@@ -1,0 +1,98 @@
+<h1>Edit Student</h1>
+<hr>
+<div class="col-md-6">
+  <form #editStudentForm="ngForm" (ngSubmit)="edit(editStudentForm.value)" autocomplete="off" novalidate>
+    <div class="form-group" [ngClass]="{'error': editStudentForm.controls.name?.invalid && editStudentForm.controls.name?.touched}">
+      <label for="studentName">Student Name:</label>
+      <em *ngIf="(!!editStudentForm.controls.name?.invalid) && (!!editStudentForm.controls.name?.touched)">Required</em>
+      <input [(ngModel)]="student.name" name="name" required  type="text" class="form-control" placeholder="Name of Student" />
+    </div>
+    <div class="form-group" [ngClass]="{'error': editStudentForm.controls.age?.invalid && editStudentForm.controls.age?.touched}">
+      <label for="studentAge">Age:</label>
+      <em *ngIf="!!editStudentForm.controls.age?.invalid && (!!editStudentForm.controls.age?.touched)">Required</em>
+      <input [(ngModel)]="student.age" name="age" min="1" max="99" required  type="number" class="form-control" placeholder="Age" />
+    </div>
+    <div class="form-group" [ngClass]="{'error': editStudentForm.controls.level?.invalid && editStudentForm.controls.level?.touched}">
+      <label for="level">Level:</label>
+      <em *ngIf="!!editStudentForm.controls.level?.invalid && (!!editStudentForm.controls.age?.touched)">Required</em>
+      <input [(ngModel)]="student.level" min="100" max="500" step="100" size="3" name="level" required  type="number" class="form-control" placeholder="Level" />
+    </div>
+
+    <div [ngClass]="{'error': editStudentForm.controls.gender?.invalid && editStudentForm.controls.gender?.touched}" class="form-group" >
+      <label>Gender </label>
+        <div class ="radio-inline"><label> <input [(ngModel)]="student.gender" type="radio" name="gender" value="Male" required>Male </label></div>
+      <div class ="radio-inline"><label><input [(ngModel)]="student.gender" type="radio" name="gender" value="Female" required>Female </label></div>
+         <em *ngIf="!!editStudentForm.controls.gender?.invalid && (!!editStudentForm.controls.gender?.touched)">Required</em>
+
+     </div>
+
+     <!-- <div [ngClass]="{'error': editStudentForm.controls.gender?.invalid && student.controls.gender?.touched}"  class='form-group' >
+      <label>Gender: </label>
+      <div class="radio-inline"><label><input [(ngModel)]="student.gender" required  type='radio' value="Male" name="gender">Male</label></div>
+         <div class="radio-inline"><label><input [(ngModel)]="student.gender" required type='radio'value="Female" name="gender">Female</label></div>
+         <em *ngIf="!!editStudentForm.controls.gender?.invalid && (!!editStudentForm.controls.gender?.touched)">Required</em>
+
+       </div> -->
+
+
+
+    <div class="form-group" [ngClass]="{'error': editStudentForm.controls.phonenumber?.invalid && editStudentForm.controls.phonenumber?.touched}">
+      <label for="e_mail">Phone Number</label>
+      <em *ngIf="!!editStudentForm.controls.phonenumber?.invalid && !!editStudentForm.controls.phonenumber?.touched">Required</em>
+      <input [(ngModel)]="student.phonenumber" pattern="^[0-9-+s()]*$" maxlength='11' name="phonenumber" required  type="number" class="form-control" placeholder="Phone Number" />
+    </div>
+    <div class="form-group" [ngClass]="{'error': editStudentForm.controls.e_mail?.invalid && editStudentForm.controls.e_mail?.touched}">
+      <label for="e_mail">E-mail:</label>
+      <em *ngIf="!!editStudentForm.controls.e_mail?.invalid && (!!editStudentForm.controls.e_mail?.touched)">Required</em>
+      <input [(ngModel)]="student.e_mail" name="e_mail" required type="text" class="form-control" placeholder="E-mail" />
+    </div>
+
+    <!-- <div class="form-group" [ngClass]="{'error': editStudentForm.controls.Degree_Programme?.invalid && editStudentForm.controls.Degree_Programme?.touched}">
+      <label for="Degree_Programme">Degree Programme</label>
+      <em *ngIf="!!editStudentForm.controls.Degree_Programme?.invalid && (!!editStudentForm.controls.Degree_Programme?.touched)">Required</em>
+      <input [(ngModel)]="student.Degree_Programme" name="Degree_programme" required id="Degree_Programme" type="text" class="form-control" placeholder="Degree Programme" />
+    </div> -->
+
+    <div [ngClass]="{'error': editStudentForm.controls.Degree_Programme?.invalid && editStudentForm.controls.Degree_Programme?.touched}"  class='form-group' >
+      <label>Degree Programme  </label>
+      <fieldset>
+      <div class="radio-inline"><label><input [(ngModel)]="student.Degree_Programme" type='radio' value="Bsc." name='Degree_Programme'>Bsc.</label></div>
+         <div class="radio-inline"><label><input [(ngModel)]="student.Degree_Programme"  type='radio'value="Msc." name='Degree_Programme'>Msc.</label></div>
+         <div class="radio-inline"><label><input [(ngModel)]="student.Degree_Programme"  type='radio'value="Phd." name='Degree_Programme'>Phd.</label></div>
+        </fieldset>
+         <em *ngIf="!!editStudentForm.controls.Degree_Programme?.invalid && (!!editStudentForm.controls.Degree_Programme?.touched)">Required</em>
+      </div>
+
+  <div ngModelGroup = "location">
+        <div class="form-group">
+          <label for="address">Location</label>
+          <input [(ngModel)]="student.location.address" name="address" type="text" class="form-control" placeholder="Address " />
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <input [(ngModel)]="student.location.town" name="town" type="text" class="form-control" placeholder="Town" />
+          </div>
+          <div class="col-md-6" >
+            <input [(ngModel)]="student.location.state" name="state" type="text" class="form-control" placeholder="State" />
+          </div>
+        </div>
+  </div>
+
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input [(ngModel)]="student.website" name="website"  type="text" class="form-control" placeholder="Website..." />
+    </div>
+    <!-- <div class="form-group" [ngClass]="{'error': editStudentForm.controls.imageUrl?.invalid && editStudentForm.controls.imageUrl?.touched}">
+      <label for="imageUrl">Image:</label>
+      <em *ngIf="editStudentForm.controls.imageUrl?.invalid && editStudentForm.controls.imageUrl?.touched && editStudentForm.controls.imageUrl?.errors.required">Required</em>
+      <em *ngIf="editStudentForm.controls.imageUrl?.invalid && editStudentForm.controls.imageUrl?.touched  && editStudentForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
+      <input [(ngModel)]="student.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="Place Image here" />
+      <img [src]="editStudentForm.controls.inageUrl?.value" *ngIf="editStudentForm.controls.imageUrl?.valid" />
+    </div> -->
+
+    <button [hidden]="editStudentForm.invalid" type="submit" class="btn btn-success">Update</button>
+    <!-- <button [hidden]="!submitted" class="btn btn-primary" (click)="submitted=false">Edit</button> -->
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>
+

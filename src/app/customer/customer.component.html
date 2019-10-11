@@ -1,0 +1,23 @@
+<h2 style="text-align:center">List of Customers Online</h2>
+<table class='table'>
+  <thead  class="navbar-default">
+    <tr>
+      <th scope="col" >Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Phonenumber</th>
+    </tr>
+  </thead>
+<tbody  >
+  <tr *ngFor ='let custom of customer'>
+    <td>{{custom.id}}</td>
+    <td>{{custom.name}}</td>
+    <td>{{custom.username}}</td>
+    <td>{{custom.email}}</td>
+    <td>{{custom.phone}}</td>
+  </tr>
+
+
+</tbody>
+</table>

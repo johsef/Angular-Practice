@@ -1,5 +1,6 @@
-import {Component} from '@angular/core'
-import {AuthService} from '../user/auth.service'
+import {Component, OnInit, Input} from '@angular/core'
+import {AuthService} from '../_services/auth.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'nav-bar',
@@ -7,10 +8,11 @@ import {AuthService} from '../user/auth.service'
   styles: [
     `.nav.navbar-nav{font-size: 12px;}
     #searchForm {margin-right:100px;}
-    @media(max-width: 1200px){
-      #searchForm{display:none;}
+    li > a.active {color: #f97924;}
+    /*@media(max-width: 1200px){
+
       li > a.active {color: #f97924; }
-    }
+    }*/
 
     `
   ]
@@ -18,8 +20,36 @@ import {AuthService} from '../user/auth.service'
 })
 
 
-export class NavBarComponent{
-  constructor(public auth:AuthService){
+export class NavBarComponent implements OnInit{
+  currentUser: any
+   message: string
+  constructor(public auth:AuthService,
+    private router : Router){
+    this.auth.currentUser.subscribe(x =>
+      this.currentUser = x)
+
+      // if(sessionStorage.getItem('currentUser')){
+      //   this.message = JSON.parse(sessionStorage.getItem('currentUser')).username
+      //    }
 
    }
+
+
+   ngOnInit(){
+     if(sessionStorage.getItem('currentUser')){
+    this.message = JSON.parse(sessionStorage.getItem('currentUser')).username
+     }
+    // this.message = this.auth.message
+   }
+   log(){
+     this.auth.logout()
+   }
+
+
+  //  certified(){
+  //    switch(){
+  //      case 'currentUser':
+  //        return
+  //    }
+  //  }
 }

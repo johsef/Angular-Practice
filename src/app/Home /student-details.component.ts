@@ -1,7 +1,7 @@
 import {Component} from '@angular/core'
 import {ActivatedRoute} from '@angular/router';
-import {StudentService} from '../Shared/student.service'
-import {IStudent} from '../Shared/index'
+import {StudentService} from '../_services/student.service'
+import {IStudent} from '../_models'
 
 
 
@@ -15,7 +15,7 @@ styles : [`
 })
 
 export class StudentDetailsComponent{
-  student: IStudent
+  student
   constructor(private studentService: StudentService,
     private route: ActivatedRoute){
 

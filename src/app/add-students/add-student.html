@@ -1,0 +1,104 @@
+<h1>Add Student</h1>
+<hr>
+<div class="col-md-6">
+  <form #newStudentForm="ngForm" (ngSubmit)="addStudent(newStudentForm.value)" autocomplete="off" novalidate>
+    <div class="form-group" [ngClass]="{'error': newStudentForm.controls.name?.invalid && newStudentForm.controls.name?.touched}">
+      <label for="studentName">Student Name:</label>
+      <em *ngIf="(!!newStudentForm.controls.name?.invalid) && (!!newStudentForm.controls.name?.touched)">Required</em>
+
+
+      <input #name = "ngModel" (ngModel)="newStudent.name" name="name" required #name='ngModel' id="name" type="text" class="form-control" placeholder="Name of Student" />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newStudentForm.controls.age?.invalid && newStudentForm.controls.age?.touched}">
+      <label for="studentAge">Age:</label>
+      <em *ngIf="!!newStudentForm.controls.age?.invalid && (!!newStudentForm.controls.age?.touched)">Required</em>
+      <input (ngModel)="newStudent.age" min="1" max="99"  name="age" required id="studentAge" type="number" class="form-control" placeholder="Age" />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newStudentForm.controls.level?.invalid && newStudentForm.controls.level?.touched}">
+      <label for="level">Level:</label>
+      <em *ngIf="!!newStudentForm.controls.level?.invalid && (!!newStudentForm.controls.level?.touched)">Required</em>
+      <input (ngModel)="newStudent.level" #level = "ngModel" minLength="100" maxLength="500" step="100" size="3" name="level" required  type="number" class="form-control" placeholder="Level" />
+    </div>
+
+    <!-- <div [ngClass]="{'error': newStudentForm.controls.gender?.invalid && newStudentForm.controls.gender?.touched}" class="form-group row">
+      <label class="col-xm-6 ">Gender:</label>
+       <div class ="col-sm-3 mt-2 mx-sm-4">
+          <div class="radio-inline"><label><input (ngModel)="newStudent.gender" required type='radio' name='gender'>Male</label></div>
+          <div class="radio-inline"><label><input (ngModel)="newStudent.gender" required type='radio' name='gender'>Female</label></div>
+        <label class ="mb-0 mr-4"> Male <input (ngModel)="newStudent.gender" type="radio" name="gender" value="male" required></label>
+        <label class ="mb-0 mr-3">Female <input (ngModel)="newStudent.gender" type="radio" name="gender" value="female" required></label>
+         <em *ngIf="!!newStudentForm.controls.gender?.invalid && (!!newStudentForm.controls.gender?.touched)">Required</em>
+         </div>
+
+     </div> -->
+
+     <div [ngClass]="{'error': newStudentForm.controls.gender?.invalid && newStudentForm.controls.gender?.touched}"  class='form-group' >
+    <label>Gender  </label>
+    <div class="radio-inline"><label><input (ngModel)="newStudent.gender" type='radio' value="Male" name='gender'>Male</label></div>
+       <div class="radio-inline"><label><input (ngModel)="newStudent.gender"  type='radio'value="Female" name='gender'>Female</label></div>
+       <em *ngIf="!!newStudentForm.controls.gender?.invalid && (!!newStudentForm.controls.gender?.touched)">Required</em>
+      </div>
+
+
+
+    <div class="form-group" [ngClass]="{'error': newStudentForm.controls.phonenumber?.invalid && newStudentForm.controls.phonenumber?.touched}">
+      <label for="e_mail">Phone Number</label>
+      <em *ngIf="!!newStudentForm.controls.phonenumber?.invalid && !!newStudentForm.controls.phonenumber?.touched">Required</em>
+      <input (ngModel)="newStudent.phonenumber" #pNumber="ngModel" name="phonenumber" pattern="^[0-9-+s()]*$" maxlength='11' required id="phonenumber" type="number" class="form-control" placeholder="Phone Number" />
+    </div>
+
+
+    <div class="form-group" [ngClass]="{'error': newStudentForm.controls.e_mail?.invalid && newStudentForm.controls.e_mail?.touched}">
+      <label for="e_mail">E-mail:</label>
+      <em *ngIf="!!newStudentForm.controls.e_mail?.invalid && (!!newStudentForm.controls.e_mail?.touched)">Required</em>
+      <input (ngModel)="newStudent.e_mail" name="e_mail" pattern="[^@\s]+@[^@\s]+"  required id="e_mail" type="text" class="form-control" placeholder="E-mail" />
+    </div>
+
+    <!-- <div class="form-group" [ngClass]="{'error': newStudentForm.controls.Degree_Programme?.invalid && newStudentForm.controls.Degree_Programme?.touched}">
+      <label for="Degree_Programme">Degree Programme</label>
+      <em *ngIf="!!newStudentForm.controls.Degree_Programme?.invalid && (!!newStudentForm.controls.Degree_Programme?.touched)">Required</em>
+      <input (ngModel)="newStudent.Degree_Programme" name="Degree_programme" required id="Degree_Programme" type="text" class="form-control" placeholder="Degree Programme" />
+    </div> -->
+
+    <div [ngClass]="{'error': newStudentForm.controls.Degree_Programme?.invalid && newStudentForm.controls.Degree_Programme?.touched}"  class='form-group' >
+    <label>Degree Programme  </label>
+    <fieldset>
+    <div class="radio-inline"><label><input (ngModel)="newStudent.Degree_Programme" type='radio' value="Bsc." name='Degree_Programme'>Bsc.</label></div>
+       <div class="radio-inline"><label><input (ngModel)="newStudent.Degree_Programme"  type='radio'value="Msc." name='Degree_Programme'>Msc.</label></div>
+       <div class="radio-inline"><label><input (ngModel)="newStudent.Degree_Programme"  type='radio'value="Phd." name='Degree_Programme'>Phd.</label></div>
+      </fieldset>
+       <em *ngIf="!!newStudentForm.controls.Degree_Programme?.invalid && (!!newStudentForm.controls.Degree_Programme?.touched)">Required</em>
+    </div>
+  <div ngModelGroup = "location">
+        <div class="form-group">
+          <label for="address">Location</label>
+          <input (ngModel)="newStudent.location.address" name="address" id="address" type="text" class="form-control" placeholder="Address " />
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <input (ngModel)="newStudent.location.town" name="town" id="town" type="text" class="form-control" placeholder="Town" />
+          </div>
+          <div class="col-md-6" >
+            <input (ngModel)="newStudent.location.state" name="state" id="state" type="text" class="form-control" placeholder="State" />
+          </div>
+        </div>
+  </div>
+
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input (ngModel)="newStudent.website" name="website" id="website" type="text" class="form-control" placeholder="Website..." />
+    </div>
+    <!-- <div class="form-group" [ngClass]="{'error': newStudentForm.controls.imageUrl?.invalid && newStudentForm.controls.imageUrl?.touched}">
+      <label for="imageUrl">Image:</label>
+      <em *ngIf="newStudentForm.controls.imageUrl?.invalid && newStudentForm.controls.imageUrl?.touched && newStudentForm.controls.imageUrl?.errors.required">Required</em>
+      <em *ngIf="newStudentForm.controls.imageUrl?.invalid && newStudentForm.controls.imageUrl?.touched  && newStudentForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
+      <input (ngModel)="newStudent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="Place Image here" />
+      <img [src]="newStudentForm.controls.inageUrl?.value" *ngIf="newStudentForm.controls.imageUrl?.valid" />
+    </div> -->
+
+    <button  [disabled]="newStudentForm.invalid" type="submit" class="btn btn-primary">Save</button>
+    <!-- <button [hidden]="!submitted" class="btn btn-primary" (click)="submitted=false">Edit</button> -->
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>
+

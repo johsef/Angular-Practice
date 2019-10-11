@@ -3,6 +3,7 @@ export interface IStudent{
   name: string
   age: number
   e_mail: string
+  level: number
   Degree_Programme?: string
   phonenumber: string
   location?:{
@@ -15,11 +16,11 @@ export interface IStudent{
   // sessions: ISession[]
 }
 
-export interface ISession{
-  id : number
-  name: string
-  phonenumber: number
-  Degree_Programme: string
-  age: number
+// export interface ISession{
+//   id : number
+//   name: string
+//   phonenumber: number
+//   Degree_Programme: string
+//   age: number
 
-}
+// }

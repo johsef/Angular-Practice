@@ -3,8 +3,9 @@ import {CommonModule} from '@angular/common'
 import {RouterModule} from '@angular/router'
 import {userRoutes} from './user.routes'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {ProfileComponent} from './profile.component'
-import { LoginComponent } from './login.component'
+import {ProfileComponent} from '../Home /profile.component'
+import { LoginComponent } from '../Login/login.component'
+// import { EditComponent } from '../Edit-student/edit.component'
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { LoginComponent } from './login.component'
      FormsModule
   ],
   declarations: [
-    ProfileComponent, LoginComponent
+    ProfileComponent, LoginComponent,
+    //  EditComponent
   ],
   providers:[]
 })
