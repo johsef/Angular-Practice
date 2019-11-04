@@ -1,7 +1,6 @@
 import {Component} from '@angular/core'
 import {Router} from '@angular/router'
-import {StudentService} from '../_services'
-
+import {StudentService} from '../_services/student.service'
 
 @Component({
   templateUrl:'./add-student.html',
@@ -19,37 +18,22 @@ import {StudentService} from '../_services'
 
 
 export class AddStudentComponent{
-  // isDirty:boolean = true
-   newStudent
-
-
+  newStudent
   constructor(private router: Router,
      private studentService: StudentService){}
 ngOnInit(){
-  // this.student={
-  //   name: "James",
-  //   age: "10",
-  //   phonenumber: "12345",
-  //   e_mail:"j@ymail.com",
-  //   level: "200",
-  //   gender: "Male",
-  //   Degree_Programme: "Msc.",
-  //   location: {
-  //     address:"2",
-  //     town: "ikate",
-  //     state: "lagos"
-  //   },
-  //   website: "3indigen.com"
-  // }
 }
 
-  addStudent(formValues){
-    this.studentService.addStudent(formValues)
-    // this.isDirty = false
+
+addStudent(form){
+  // this.studentService.local.addStudent(form)
+  this.studentService.server.addStudent(form)
     this.router.navigate(['/dashboard'])
   }
+
   cancel(){
     window.confirm('Are you sure you want to cancel?')
     this.router.navigate(['/dashboard'])
   }
+
 }

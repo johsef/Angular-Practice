@@ -5,14 +5,10 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 import {delay, mergeMap, materialize, dematerialize} from 'rxjs/operators'
 
-//array in local storage for Registered students
-
-// let users = JSON.parse(localStorage.getItem('students')) ||[]
-
 let users = [{id: 1, firstName: 'James', lastName: 'Handerson', username: 'admin', password: 'admin'}]
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class BackendInterceptor implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,8 +30,6 @@ export class BackendInterceptor implements HttpInterceptor{
         return getUsers()
       default:
         return next.handle(req)
-        // case url.endsWith('/students/register') && method === 'POST':
-      //   return register()
     }
   }
   //Route functions
@@ -43,8 +37,6 @@ export class BackendInterceptor implements HttpInterceptor{
   function authenticate(){
     const {username, password} = body
     const user = users.find(x => x.username === username && x.password === password )
-    // if (!user) return error('Username or password incorrect')
-    // else{ success('Login Successful')
     return ok({
       id: user.id,
       firstName: user.firstName,
@@ -53,7 +45,6 @@ export class BackendInterceptor implements HttpInterceptor{
       token: 'secret'
     })
   }
-  // }
 
   //helper function
   function ok(body?){
@@ -70,13 +61,6 @@ export class BackendInterceptor implements HttpInterceptor{
     function unauthorised(){
       return throwError({status: 401, error: {message: 'Unauthorized'}})
     }
-    // function error(message){
-    //   return throwError({error:{message}})
-    // }
-    // function success(message){
-    //   return throwError({error : {message}});
-
-    // }
 
 }
 }

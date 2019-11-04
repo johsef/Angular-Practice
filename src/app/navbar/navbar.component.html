@@ -17,29 +17,14 @@
 
         </li>
         <li><a *ngIf="currentUser"  [routerLink]="['/new']" routerLinkActive='active'>Add Student</a></li>
-        <!-- <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-            Events
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li >
-              <a href="">Something sha</a>
-            </li>
-          </ul>
-        </li> -->
+
         <li><a   [routerLink]="['/customer']" [routerLinkActiveOptions]= "{exact:true}" routerLinkActive='active'>Customer</a></li>
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
-          <!-- <li>
-              <a >Welcome {{message}</a>
-              <a *ngIf="currentUser" (click)='log()' routerLinkActive='active'><span>Welcome {{message}}</span> Logout</a>
-            <a *ngIf="!currentUser" routerLinkActive='active' [routerLink]="['/admin/login']">Login</a> -->
-            <!-- <a *ngIf="auth.isAuthenticated()" routerLinkActive='active' [routerLink]="['/user/profile']">Welcome {{auth.currentUser.firstName}}</a> -->
               <li><a *ngIf="!currentUser" routerLinkActive='active' [routerLink]="['/admin/login']">Login</a></li>
              <li *ngIf="currentUser" class="dropdown">
-          <a ng-onload  class="dropdown-toggle" data-toggle="dropdown" >
+          <a  class="dropdown-toggle" data-toggle="dropdown" >
               Welcome {{message}}
             <span class="caret"></span>
           </a>
@@ -52,14 +37,6 @@
           </li>
         </ul>
       </div>
-      <!-- <form id="searchForm"  class="navbar-form navbar-right"  > -->
-        <!-- <div class="form-group"> -->
-          <!-- <input type="text" class="form-control" placeholder="Search Sessions" > -->
-        <!-- </div> -->
-        <!-- <button class="btn btn-default" >
-          Search
-        </button> -->
-      <!-- </form> -->
     </div>
   </div>
 </div>

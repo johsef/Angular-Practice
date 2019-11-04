@@ -9,7 +9,8 @@
       <th scope="col">Phonenumber</th>
     </tr>
   </thead>
-<tbody  >
+<tbody>
+
   <tr *ngFor ='let custom of customer'>
     <td>{{custom.id}}</td>
     <td>{{custom.name}}</td>
@@ -21,3 +22,5 @@
 
 </tbody>
 </table>
+<div *ngIf="loading"><h1 style="text-align: center;">Loading...</h1></div>
+

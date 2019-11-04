@@ -1,7 +1,9 @@
-<h1>Edit Student</h1>
+<h1>Edit Student Record</h1>
 <hr>
 <div class="col-md-6">
-  <form #editStudentForm="ngForm" (ngSubmit)="edit(editStudentForm.value)" autocomplete="off" novalidate>
+  <h1 *ngIf="loading" style="text-align: center; width: 100%" class="justify-content-right">Loading...</h1>
+
+  <form *ngIf='!loading' #editStudentForm="ngForm" (ngSubmit)="edit(editStudentForm.value)" autocomplete="off" novalidate>
     <div class="form-group" [ngClass]="{'error': editStudentForm.controls.name?.invalid && editStudentForm.controls.name?.touched}">
       <label for="studentName">Student Name:</label>
       <em *ngIf="(!!editStudentForm.controls.name?.invalid) && (!!editStudentForm.controls.name?.touched)">Required</em>
@@ -26,14 +28,6 @@
 
      </div>
 
-     <!-- <div [ngClass]="{'error': editStudentForm.controls.gender?.invalid && student.controls.gender?.touched}"  class='form-group' >
-      <label>Gender: </label>
-      <div class="radio-inline"><label><input [(ngModel)]="student.gender" required  type='radio' value="Male" name="gender">Male</label></div>
-         <div class="radio-inline"><label><input [(ngModel)]="student.gender" required type='radio'value="Female" name="gender">Female</label></div>
-         <em *ngIf="!!editStudentForm.controls.gender?.invalid && (!!editStudentForm.controls.gender?.touched)">Required</em>
-
-       </div> -->
-
 
 
     <div class="form-group" [ngClass]="{'error': editStudentForm.controls.phonenumber?.invalid && editStudentForm.controls.phonenumber?.touched}">
@@ -47,12 +41,6 @@
       <input [(ngModel)]="student.e_mail" name="e_mail" required type="text" class="form-control" placeholder="E-mail" />
     </div>
 
-    <!-- <div class="form-group" [ngClass]="{'error': editStudentForm.controls.Degree_Programme?.invalid && editStudentForm.controls.Degree_Programme?.touched}">
-      <label for="Degree_Programme">Degree Programme</label>
-      <em *ngIf="!!editStudentForm.controls.Degree_Programme?.invalid && (!!editStudentForm.controls.Degree_Programme?.touched)">Required</em>
-      <input [(ngModel)]="student.Degree_Programme" name="Degree_programme" required id="Degree_Programme" type="text" class="form-control" placeholder="Degree Programme" />
-    </div> -->
-
     <div [ngClass]="{'error': editStudentForm.controls.Degree_Programme?.invalid && editStudentForm.controls.Degree_Programme?.touched}"  class='form-group' >
       <label>Degree Programme  </label>
       <fieldset>
@@ -65,7 +53,6 @@
 
   <div ngModelGroup = "location">
         <div class="form-group">
-          <label for="address">Location</label>
           <input [(ngModel)]="student.location.address" name="address" type="text" class="form-control" placeholder="Address " />
         </div>
         <div class="row">
@@ -82,17 +69,11 @@
       <label for="website">Website</label>
       <input [(ngModel)]="student.website" name="website"  type="text" class="form-control" placeholder="Website..." />
     </div>
-    <!-- <div class="form-group" [ngClass]="{'error': editStudentForm.controls.imageUrl?.invalid && editStudentForm.controls.imageUrl?.touched}">
-      <label for="imageUrl">Image:</label>
-      <em *ngIf="editStudentForm.controls.imageUrl?.invalid && editStudentForm.controls.imageUrl?.touched && editStudentForm.controls.imageUrl?.errors.required">Required</em>
-      <em *ngIf="editStudentForm.controls.imageUrl?.invalid && editStudentForm.controls.imageUrl?.touched  && editStudentForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
-      <input [(ngModel)]="student.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="Place Image here" />
-      <img [src]="editStudentForm.controls.inageUrl?.value" *ngIf="editStudentForm.controls.imageUrl?.valid" />
-    </div> -->
 
     <button [hidden]="editStudentForm.invalid" type="submit" class="btn btn-success">Update</button>
-    <!-- <button [hidden]="!submitted" class="btn btn-primary" (click)="submitted=false">Edit</button> -->
     <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
+
+
 </div>
 

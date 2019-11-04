@@ -5,7 +5,7 @@ export interface IStudent{
   e_mail: string
   level: number
   Degree_Programme?: string
-  phonenumber: string
+  phonenumber: number
   location?:{
     address: string
     town: string
@@ -13,14 +13,4 @@ export interface IStudent{
   }
   website?: string
   gender: string
-  // sessions: ISession[]
 }
-
-// export interface ISession{
-//   id : number
-//   name: string
-//   phonenumber: number
-//   Degree_Programme: string
-//   age: number
-
-// }

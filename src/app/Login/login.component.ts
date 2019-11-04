@@ -14,9 +14,6 @@ import {first} from 'rxjs/operators'
   }`]
 })
 export class LoginComponent implements OnInit{
-  // UserName:string
-  // password:string
-
   loginForm: FormGroup
   loading=false
   submitted = false
@@ -24,14 +21,12 @@ export class LoginComponent implements OnInit{
   mouseoverLogin
   message: string
 
-  // messa = this.f.username.value
 
   constructor(
     private alertService: AlertService,
     private authService: AuthService,
    private router: Router,
-   private formBuider: FormBuilder,
-   private route: ActivatedRoute
+   private formBuider: FormBuilder
    ){}
 
   ngOnInit(){
@@ -39,7 +34,6 @@ export class LoginComponent implements OnInit{
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
-      // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
   }
 
   get f() {return this.loginForm.controls}
@@ -47,58 +41,27 @@ export class LoginComponent implements OnInit{
   onSubmit(){
     this.submitted  = true
 
-    //reset alerts on submit
     this.alertService.clear()
 
     if(this.loginForm.invalid){return}
 
-    // this.loading = true
 
     this.authService.login(this.f.username.value, this.f.password.value)
     .pipe(first())
     .subscribe(
       data =>{
         this.alertService.success('Login Successful', true)
-
-        // this.router.navigate(['dashboard'])
-        // setTimeout(() =>{
           location.href="dashboard"
-        // }, 3000)
-
       },
       error =>{
-          // this.message = "Invalid Username or Password"
-
-          // setTimeout(() =>{
-          //   this.message=" "
-          // },2000)
           this.alertService.error('Invalid username or password')
-          // this.loading= false
+
       }
     )
 
 
 
   }
-
-
-  // login(formValues){
-    //  this.authService.loginUser(formValues.UserName, formValues.password)
-// if (formValues.UserName == this.model.username && formValues.password == this.model.password){
-//   localStorage.setItem('token', 'admin')
-//   this.router.navigate(['app'])
-// }
-// else{
-//   this.message = "Invalid Username or Password!"
-//   this.router.navigate(['/user/login'])
-// }
-
-
-
-
-    // this.router.navigate(['app'])
-    // this.authService.logout()
-  // }
   cancel(){
     this.router.navigate(['home'])
   }

@@ -9,8 +9,12 @@ export class StudentProfileResolver implements Resolve<any>{
 
   }
 
+  // resolve(){
+  //   return this.studentService.local.getAll()
+  //   .pipe(map(students => students))
+  // }
   resolve(){
-    return this.studentService.getStudents()
+    return this.studentService.server.getStudents()
     .pipe(map(students => students))
   }
 }

@@ -1,10 +1,9 @@
 import {Injectable, OnInit} from '@angular/core'
-import {IUser} from '../_models/user.model'
 import {HttpClient} from '@angular/common/http'
 import {Router} from '@angular/router'
 import {BehaviorSubject, Observable} from 'rxjs'
 import {map} from 'rxjs/operators'
-import {AlertService} from './index'
+import {AlertService} from './alert.services'
 
 @Injectable({providedIn: 'root'})
 
@@ -41,7 +40,6 @@ public get currentUserValue(){return this.CurrentUserSubject.value}
 
           this.CurrentUserSubject.next(user)
           this.message = JSON.parse(sessionStorage.getItem('currentUser')).username
-          // console.log(this.message)
 
         }
         return user
@@ -50,7 +48,6 @@ public get currentUserValue(){return this.CurrentUserSubject.value}
 
 
     getCustomers(): Observable<any>{
-      // console.log(this.http.get(`https://jsonplaceholder.typicode.com/users`))
       return  this.http.get(`https://jsonplaceholder.typicode.com/users`)
 
     }
@@ -66,45 +63,4 @@ public get currentUserValue(){return this.CurrentUserSubject.value}
           this.alertService.clear()
         }, 2000)
       }
-
-  // currentUser: IUser
-  // currentUser
-  // user
-  // UserName
-  // password
-/*   loginUser(UserName: string, password: string){
-    this.currentUser ={
-      id: 1,
-      firstName: 'John',
-      lastName: 'Doe',
-      username: UserName,
-      password: password
-    }
-    this.user= {
-      username: UserName,
-      password: password
-    }
-
-
-  } */
-
-
-
-
-
-
-/*   isAuthenticated(){
-    return !!this.currentUser
-    return !!this.user
-    return !!this.loginUser(this.UserName, this.password)
-  } */
-  // logout(): void{
-  //   localStorage.removeItem('token')
-  // }
-
-  // updateCurrentUser(firstName: string, lastName: string ){
-  //   this.currentUser.firstName = firstName
-  //   this.currentUser.lastName = lastName
-  // }
-
 }

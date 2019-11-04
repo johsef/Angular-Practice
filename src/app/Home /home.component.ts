@@ -3,9 +3,8 @@ import {StudentService} from '../_services/student.service'
 import {ActivatedRoute} from '@angular/router'
 import {IStudent} from '../_models'
 import {Router} from '@angular/router'
-import {AlertService, AuthService} from '../_services'
-declare let toastr
-
+import {AlertService} from '../_services/alert.services'
+  import {AuthService} from '../_services/auth.service'
 @Component({
   selector: 'student',
   template:`
@@ -25,18 +24,8 @@ declare let toastr
 export class HomeComponent implements OnInit{
 
   students:IStudent[]
-constructor(private studentService: StudentService,
-  private auth:AuthService,
-  private route: ActivatedRoute,
-private router: Router,
-private alertService : AlertService){
-}
+constructor(private route: ActivatedRoute){}
 customer
-
-// ngOnInit(): void {
-//   setTimeout(() =>{
-//     this.alertService.clear()
-//   }, 1500)
 
 
 ngOnInit(): void {

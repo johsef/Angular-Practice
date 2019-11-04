@@ -9,10 +9,6 @@ import {Router} from '@angular/router'
     `.nav.navbar-nav{font-size: 12px;}
     #searchForm {margin-right:100px;}
     li > a.active {color: #f97924;}
-    /*@media(max-width: 1200px){
-
-      li > a.active {color: #f97924; }
-    }*/
 
     `
   ]
@@ -23,15 +19,9 @@ import {Router} from '@angular/router'
 export class NavBarComponent implements OnInit{
   currentUser: any
    message: string
-  constructor(public auth:AuthService,
-    private router : Router){
+  constructor(public auth:AuthService){
     this.auth.currentUser.subscribe(x =>
       this.currentUser = x)
-
-      // if(sessionStorage.getItem('currentUser')){
-      //   this.message = JSON.parse(sessionStorage.getItem('currentUser')).username
-      //    }
-
    }
 
 
@@ -39,17 +29,8 @@ export class NavBarComponent implements OnInit{
      if(sessionStorage.getItem('currentUser')){
     this.message = JSON.parse(sessionStorage.getItem('currentUser')).username
      }
-    // this.message = this.auth.message
    }
    log(){
      this.auth.logout()
    }
-
-
-  //  certified(){
-  //    switch(){
-  //      case 'currentUser':
-  //        return
-  //    }
-  //  }
 }

@@ -22,7 +22,9 @@ export class StudentDetailsComponent{
   }
 
   ngOnInit() {
-    this.student = this.studentService.getStudent(+this.route.snapshot.params['id'])
+    // this.student = this.studentService.local.editStudent(+this.route.snapshot.params['id'])
+
+    this.student = this.studentService.server.getStudent(+this.route.snapshot.params['id'])
   }
 }
 

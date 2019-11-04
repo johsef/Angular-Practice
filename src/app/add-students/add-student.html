@@ -20,18 +20,6 @@
       <input (ngModel)="newStudent.level" #level = "ngModel" minLength="100" maxLength="500" step="100" size="3" name="level" required  type="number" class="form-control" placeholder="Level" />
     </div>
 
-    <!-- <div [ngClass]="{'error': newStudentForm.controls.gender?.invalid && newStudentForm.controls.gender?.touched}" class="form-group row">
-      <label class="col-xm-6 ">Gender:</label>
-       <div class ="col-sm-3 mt-2 mx-sm-4">
-          <div class="radio-inline"><label><input (ngModel)="newStudent.gender" required type='radio' name='gender'>Male</label></div>
-          <div class="radio-inline"><label><input (ngModel)="newStudent.gender" required type='radio' name='gender'>Female</label></div>
-        <label class ="mb-0 mr-4"> Male <input (ngModel)="newStudent.gender" type="radio" name="gender" value="male" required></label>
-        <label class ="mb-0 mr-3">Female <input (ngModel)="newStudent.gender" type="radio" name="gender" value="female" required></label>
-         <em *ngIf="!!newStudentForm.controls.gender?.invalid && (!!newStudentForm.controls.gender?.touched)">Required</em>
-         </div>
-
-     </div> -->
-
      <div [ngClass]="{'error': newStudentForm.controls.gender?.invalid && newStudentForm.controls.gender?.touched}"  class='form-group' >
     <label>Gender  </label>
     <div class="radio-inline"><label><input (ngModel)="newStudent.gender" type='radio' value="Male" name='gender'>Male</label></div>
@@ -54,11 +42,6 @@
       <input (ngModel)="newStudent.e_mail" name="e_mail" pattern="[^@\s]+@[^@\s]+"  required id="e_mail" type="text" class="form-control" placeholder="E-mail" />
     </div>
 
-    <!-- <div class="form-group" [ngClass]="{'error': newStudentForm.controls.Degree_Programme?.invalid && newStudentForm.controls.Degree_Programme?.touched}">
-      <label for="Degree_Programme">Degree Programme</label>
-      <em *ngIf="!!newStudentForm.controls.Degree_Programme?.invalid && (!!newStudentForm.controls.Degree_Programme?.touched)">Required</em>
-      <input (ngModel)="newStudent.Degree_Programme" name="Degree_programme" required id="Degree_Programme" type="text" class="form-control" placeholder="Degree Programme" />
-    </div> -->
 
     <div [ngClass]="{'error': newStudentForm.controls.Degree_Programme?.invalid && newStudentForm.controls.Degree_Programme?.touched}"  class='form-group' >
     <label>Degree Programme  </label>
@@ -88,16 +71,9 @@
       <label for="website">Website</label>
       <input (ngModel)="newStudent.website" name="website" id="website" type="text" class="form-control" placeholder="Website..." />
     </div>
-    <!-- <div class="form-group" [ngClass]="{'error': newStudentForm.controls.imageUrl?.invalid && newStudentForm.controls.imageUrl?.touched}">
-      <label for="imageUrl">Image:</label>
-      <em *ngIf="newStudentForm.controls.imageUrl?.invalid && newStudentForm.controls.imageUrl?.touched && newStudentForm.controls.imageUrl?.errors.required">Required</em>
-      <em *ngIf="newStudentForm.controls.imageUrl?.invalid && newStudentForm.controls.imageUrl?.touched  && newStudentForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
-      <input (ngModel)="newStudent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="Place Image here" />
-      <img [src]="newStudentForm.controls.inageUrl?.value" *ngIf="newStudentForm.controls.imageUrl?.valid" />
-    </div> -->
+
 
     <button  [disabled]="newStudentForm.invalid" type="submit" class="btn btn-primary">Save</button>
-    <!-- <button [hidden]="!submitted" class="btn btn-primary" (click)="submitted=false">Edit</button> -->
     <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
 </div>

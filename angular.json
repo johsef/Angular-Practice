@@ -22,12 +22,16 @@
             "lazyModules": ["src/app/user/user.module"],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {"glob": "**/**",
+              "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"}
             ],
             "styles": [
               "node_modules/toastr/build/toastr.min.css",
               "node_modules/ngf-bootstrap/dist/bootstrap.min.css",
               "src/styles.css"
+
               ],
             "scripts": [
               "node_modules/toastr/build/toastr.min.js",
