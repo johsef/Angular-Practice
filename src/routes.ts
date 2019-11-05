@@ -23,7 +23,7 @@ export const appRoutes:Routes = [
  {path: 'edit/:id', component: EditComponent,
  canActivate: [StudentRouteActivator] },
 {path: '', redirectTo: 'home', pathMatch: 'full'},
-{path: 'admin', loadChildren: './app/user/user.module#UserModule'},
+{path: 'admin', loadChildren: 'src/app/user/user.module#UserModule'},
 {path : 'dashboard', component: DashboardComponent,
 resolve: {students:StudentProfileResolver},canActivate: [StudentRouteActivator]
 },
